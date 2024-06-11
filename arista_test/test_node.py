@@ -12,13 +12,13 @@ class TestJointPublisher(Node):
         self.joint_states=JointState()
         self.joint_states.name=[" "]*6
         self.joint_states.velocity=[0.0]*6
-        self.name_l=["right_front", "right_mid", "right_rear", "left_front", "left_mid", "left_rear"]
-        self.velocity_l=[10,10,10,10,10,12]
+        self.name_l=["right_front", "right_mid", "right_back", "left_front", "left_mid", "left_back"]
+        self.velocity_l=[10,10,12,12,12,10]
         super().__init__('test_publisher')
         self.publisher_ = self.create_publisher(JointState, '/joint_states', 10)
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.skip_list=[]
+        self.skip_list=[4,5]
         self.i = 0
         
 
